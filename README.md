@@ -1,33 +1,68 @@
 # node-express-restful-api
 A basic and lean recipe for implementing a RESTful API in a node express server.
 
-Requirements
+This application will connect to the local mongo server and create a new table 
+inside <strong><code>local</code></strong> called <strong><code>product</code></strong>, 
+which will be used for testing purposes.
+
+The API is hardened against both client- and server-side errors, and will always
+return the appropriate headers and response (if the latter is applicable).
+
+
+Dependencies
 -
-You will need a running MongoDB daemon.
+git  
+node.js 4.2.4+  
+MongoDB
+
 
 To install
 -
-npm install
+```
+$ mkdir -vp node-express-restful-api  
+$ cd node-express-restful-api  
+$ git clone https://github.com/benjaminvickers/node-express-restful-api.git .  
+$ npm install
+```
+Check to ensure the default database connection details will work. These are held
+in <strong><code>configs/db.js</code></strong>. Modify them as necessary.
 
-To run
+
+To run in dev mode
 -
-sudo npm start
+```
+$ sudo npm start
+```
+
 
 To test using cURL
 -
-#### Create users
-curl -X POST -d username=Adam -H "accept: application/json" http://localhost/api/v1/users  
-curl -X POST -d username=Barry -H "accept: application/json" http://localhost/api/v1/users
+Experiment with the cURLs below, all of which will work. Attempt to break the
+API by omiting data, omitting request headers, providing invalid links etc.
 
-#### Get all users
-curl -X GET -H "accept: application/json" http://localhost/api/v1/users
+#### Populate the database:
+```
+$ curl -X POST -H "accept: application/json" -H "content-type: application/json" --data '{"name":"product1", "price":"299", "description":"desc1"}' http://localhost:80/api/v1/products/  
+$ curl -X POST -H "accept: application/json" -H "content-type: application/json" --data '{"name":"product2", "price":"399", "description":"desc2"}' http://localhost:80/api/v1/products/  
+$ curl -X POST -H "accept: application/json" -H "content-type: application/json" --data '{"name":"product3", "price":"499", "description":"desc3"}' http://localhost:80/api/v1/products/  
+```
 
-#### Get specific users
-curl -X GET -H "accept: application/json" http://localhost/api/v1/users/Adam  
-curl -X GET -H "accept: application/json" http://localhost/api/v1/users/Barry
+#### Get data:
+```
+$ curl -X GET -H "accept: application/json" http://localhost:80/api/v1/products/  
+$ curl -X GET -H "accept: application/json" http://localhost:80/api/v1/products/1    
+```
 
-#### Update user
-curl -X PUT -d username=Benjamin http://localhost/api/v1/users/Barry
+#### Update data:
+```
+$ curl -X PUT -H "accept: application/json" -H "content-type: application/json" --data '{"price":"1299"}' http://localhost:80/api/v1/products/1  
+$ curl -X PUT -H "accept: application/json" -H "content-type: application/json" --data '{"name":"PRODUCT2"}' http://localhost:80/api/v1/products/2  
+$ curl -X PUT -H "accept: application/json" -H "content-type: application/json" --data '{"description":"reallygood"}' http://localhost:80/api/v1/products/3
+```
 
-#### Delete user
-curl -X DELETE http://localhost/api/v1/users/Benjamin
+#### Delete data:
+```
+$ curl -X DELETE -H "accept: application/json" http://localhost:80/api/v1/products/1  
+$ curl -X DELETE -H "accept: application/json" http://localhost:80/api/v1/products/2  
+$ curl -X DELETE -H "accept: application/json" http://localhost:80/api/v1/products/3
+```

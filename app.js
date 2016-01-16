@@ -37,7 +37,6 @@ app.use(function(req, res, next) {
  * Error handler.
  */
 app.use(function(err, req, res, next) {
-
   // Capture malformed JSON errors thrown by bodyParser.
   res.status(err.status);
   res.json();

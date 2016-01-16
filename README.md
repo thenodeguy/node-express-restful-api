@@ -6,7 +6,7 @@ inside <strong><code>local</code></strong> called <strong><code>product</code></
 which will be used for testing purposes.
 
 The API is hardened against both client- and server-side errors, and will always
-return the appropriate headers and response (if the latter is applicable).
+return the appropriate headers and response.
 
 
 Dependencies

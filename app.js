@@ -30,6 +30,7 @@ app.use('/api/v1/', productRoutes);
  */
 app.use(function(req, res, next) {
   res.status(404);
+  res.set('Cache-Control', 'private, max-age=0, no-cache');
   res.json();
 });
 
@@ -39,6 +40,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // Capture malformed JSON errors thrown by bodyParser.
   res.status(err.status);
+  res.set('Cache-Control', 'private, max-age=0, no-cache');
   res.json();
   return;
 });

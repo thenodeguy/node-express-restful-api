@@ -12,6 +12,7 @@ router.use(function(req, res, next) {
     var acceptHeader = req.get('accept');
     if(acceptHeader.indexOf('application/json') === -1) {
       res.status(406);
+      res.set('Cache-Control', 'private, max-age=0, no-cache');
       res.send();
       return;
     }
@@ -24,6 +25,7 @@ router.get('/products', function(req, res, next) {
       // This represents a real error (not an empty products list, which will
       // not generate an error).
       res.status(500);
+      res.set('Cache-Control', 'private, max-age=0, no-cache');
       res.json();
       return;
     }
@@ -33,6 +35,7 @@ router.get('/products', function(req, res, next) {
     };
     
     res.status(200);
+    res.set('Cache-Control', 'private, max-age=0, no-cache');
     res.json(response);
   });
 });
@@ -43,11 +46,13 @@ router.get('/products/:id', function(req, res, next) {
     if(err) {
       // The resource cannot be found.
       res.status(404);
+      res.set('Cache-Control', 'private, max-age=0, no-cache');
       res.json();
       return;
     }
     
     res.status(200);
+    res.set('Cache-Control', 'private, max-age=0, no-cache');
     res.json(product);
   });
 });
@@ -74,6 +79,7 @@ router.post('/products', function(req, res, next) {
   
   if(isMissingProperty) {
     res.status(400);
+    res.set('Cache-Control', 'private, max-age=0, no-cache');
     res.send();
     return;  
   }
@@ -87,11 +93,13 @@ router.post('/products', function(req, res, next) {
   product.save(function(err) {
     if(err) {
       res.status(500);
+      res.set('Cache-Control', 'private, max-age=0, no-cache');
       res.json();
       return;
     }
     
     res.status(200);
+    res.set('Cache-Control', 'private, max-age=0, no-cache');
     res.json(product);
   });
 });
@@ -102,6 +110,7 @@ router.put('/products/:id', function(req, res, next) {
     if(err) {
       // The resource cannot be found.
       res.status(404);
+      res.set('Cache-Control', 'private, max-age=0, no-cache');
       res.json();
       return;
     }
@@ -129,6 +138,7 @@ router.put('/products/:id', function(req, res, next) {
     // Test to ensure that at least one field has been updated.
     if(!isValidUpdate) {
       res.status(400);
+      res.set('Cache-Control', 'private, max-age=0, no-cache');
       res.send();
       return;  
     }
@@ -136,11 +146,13 @@ router.put('/products/:id', function(req, res, next) {
     product.save(function(err) {
       if(err) {
         res.status(500);
+        res.set('Cache-Control', 'private, max-age=0, no-cache');
         res.json();
         return;
       }
       
       res.status(200);
+      res.set('Cache-Control', 'private, max-age=0, no-cache');
       res.json(product);
     });
   });
@@ -151,6 +163,7 @@ router.delete('/products/:id', function(req, res, next) {
     if(err) {
       // An error occured.
       res.status(404);
+      res.set('Cache-Control', 'private, max-age=0, no-cache');
       res.json();
       return;
     }
@@ -158,11 +171,13 @@ router.delete('/products/:id', function(req, res, next) {
     if(product === null) {
       // The resource cannot be found.
       res.status(404);
+      res.set('Cache-Control', 'private, max-age=0, no-cache');
       res.json();
       return;
     }
     
     res.status(204);
+    res.set('Cache-Control', 'private, max-age=0, no-cache');
     res.json();
   });
 });

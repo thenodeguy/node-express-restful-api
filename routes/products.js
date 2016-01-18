@@ -151,9 +151,11 @@ router.put('/products/:id', function(req, res, next) {
         return;
       }
       
-      res.status(200);
+      // Return idempotent success indicator. The action has been enacted but
+      // the response does not have a body.
+      res.status(204);
       res.set('Cache-Control', 'private, max-age=0, no-cache');
-      res.json(product);
+      res.json();
     });
   });
 });
@@ -176,6 +178,8 @@ router.delete('/products/:id', function(req, res, next) {
       return;
     }
     
+    // Return idempotent success indicator. The action has been enacted but
+    // the response does not have a body.
     res.status(204);
     res.set('Cache-Control', 'private, max-age=0, no-cache');
     res.json();

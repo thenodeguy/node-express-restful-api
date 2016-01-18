@@ -42,27 +42,27 @@ API by omiting data, omitting request headers, providing invalid links etc.
 
 #### Populate the database:
 ```
-$ curl -X POST -H "accept: application/json" -H "content-type: application/json" --data '{"name":"product1", "price":"299", "description":"desc1"}' http://localhost:80/api/v1/products/  
-$ curl -X POST -H "accept: application/json" -H "content-type: application/json" --data '{"name":"product2", "price":"399", "description":"desc2"}' http://localhost:80/api/v1/products/  
-$ curl -X POST -H "accept: application/json" -H "content-type: application/json" --data '{"name":"product3", "price":"499", "description":"desc3"}' http://localhost:80/api/v1/products/  
+$ curl -i -X POST -H "accept: application/json" -H "content-type: application/json" --data '{"name":"product1", "price":"299", "description":"desc1"}' http://localhost:80/api/v1/products/  
+$ curl -i -X POST -H "accept: application/json" -H "content-type: application/json" --data '{"name":"product2", "price":"399", "description":"desc2"}' http://localhost:80/api/v1/products/  
+$ curl -i -X POST -H "accept: application/json" -H "content-type: application/json" --data '{"name":"product3", "price":"499", "description":"desc3"}' http://localhost:80/api/v1/products/  
 ```
 
 #### Get data:
 ```
-$ curl -X GET -H "accept: application/json" http://localhost:80/api/v1/products/  
-$ curl -X GET -H "accept: application/json" http://localhost:80/api/v1/products/1    
+$ curl -i -X GET -H "accept: application/json" http://localhost:80/api/v1/products/  
+$ curl -i -X GET -H "accept: application/json" http://localhost:80/api/v1/products/1    
 ```
 
 #### Update data:
 ```
-$ curl -X PUT -H "accept: application/json" -H "content-type: application/json" --data '{"price":"1299"}' http://localhost:80/api/v1/products/1  
-$ curl -X PUT -H "accept: application/json" -H "content-type: application/json" --data '{"name":"PRODUCT2"}' http://localhost:80/api/v1/products/2  
-$ curl -X PUT -H "accept: application/json" -H "content-type: application/json" --data '{"description":"reallygood"}' http://localhost:80/api/v1/products/3
+$ curl -i -X PUT -H "accept: application/json" -H "content-type: application/json" --data '{"price":"1299"}' http://localhost:80/api/v1/products/1  
+$ curl -i -X PUT -H "accept: application/json" -H "content-type: application/json" --data '{"name":"PRODUCT2"}' http://localhost:80/api/v1/products/2  
+$ curl -i -X PUT -H "accept: application/json" -H "content-type: application/json" --data '{"description":"reallygood"}' http://localhost:80/api/v1/products/3
 ```
 
 #### Delete data:
 ```
-$ curl -X DELETE -H "accept: application/json" http://localhost:80/api/v1/products/1  
-$ curl -X DELETE -H "accept: application/json" http://localhost:80/api/v1/products/2  
-$ curl -X DELETE -H "accept: application/json" http://localhost:80/api/v1/products/3
+$ curl -i -X DELETE -H "accept: application/json" http://localhost:80/api/v1/products/1  
+$ curl -i -X DELETE -H "accept: application/json" http://localhost:80/api/v1/products/2  
+$ curl -i -X DELETE -H "accept: application/json" http://localhost:80/api/v1/products/3
 ```

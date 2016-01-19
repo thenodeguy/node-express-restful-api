@@ -35,7 +35,7 @@ To setup
 This script will install the test user (root, Password1), so that an authentication
 token can later be obtained from the <strong><code>authenticate</code></strong> resource.
 ```
-$ node run-script setup
+$ npm run-script setup
 ```
 
 

@@ -21,14 +21,10 @@ process.on('SIGINT', function() {
   mongoose.connection.close();
 });
 
-// Gather the default user details
-var userParticulars = {
-  username: "root",
-  password: "Password1"
-};
-
-// Add the default user to the database.
-Users.insert(userParticulars, function(err, user) {
+var user = new Users();
+user.username = 'root';
+user.password = 'Password1';
+user.save(function(err, user) {
   if (err) {
     console.log('Unable to add default user: ' + err);
   }

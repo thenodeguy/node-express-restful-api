@@ -1,5 +1,5 @@
 # node-express-restful-api
-A basic and lean recipe for implementing a RESTful API in a node express server.
+A basic and lean recipe for implementing a RESTful API in a node express server. <strong>Does not yet implement HATEOAS, so cannot be described as RESTful yet</strong>.
 
 This application will connect to the local mongo server and create a new collection 
 inside <strong><code>local</code></strong> called <strong><code>product</code></strong>, 

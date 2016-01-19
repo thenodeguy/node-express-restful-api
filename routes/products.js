@@ -4,20 +4,6 @@ var express = require('express');
 var router = express.Router();
 var Products = require('../models/products');
 
-/**
- * Middleware to check each client request specifically accepts JSON responses.
- */
-router.use(function(req, res, next) {
-    
-    var acceptHeader = req.get('accept');
-    if(acceptHeader.indexOf('application/json') === -1) {
-      res.status(406);
-      res.set('Cache-Control', 'private, max-age=0, no-cache');
-      res.send();
-      return;
-    }
-    next();
-});
 
 router.get('/products', function(req, res, next) {
   Products.find(function(err, products) {

@@ -1,4 +1,7 @@
 # node-express-restful-api
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/bjvickers/node-express-restful-api.svg)](https://greenkeeper.io/)
+
 A basic and lean recipe for implementing a RESTful API in a node express server. <strong>Does not yet implement HATEOAS, so cannot be described as RESTful yet</strong>.
 
 This application will connect to the local mongo server and create a new collection 
